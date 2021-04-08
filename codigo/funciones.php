@@ -78,6 +78,7 @@ function selecbd()
 {
     $bd = $_POST['base'];
     setcookie("bd", $bd, time() + 3600, "/");
+    header("Location:../");
 }
 
 function formuSelect($get)
@@ -100,13 +101,65 @@ function formuSelect($get)
         </div>
     </div>
 <?php
+}
+
+function formuSelectTabla($get)
+{
+
+    conectar($c);
+    listarTabla($c, $vec);
+
+?>
+
+    <div class="card text-white bg-primary o-hidden ">
+        <div class="card-body">
+            <form action="principal.php?<?php echo "$get" ?>" method="post">
+                <select name="tabla">
+                    <option value="">Seleccione:</option>
+                    <?php listabd($vec); ?>
+                </select>
+                <input type="submit" value="selecionar bd">
+            </form>
+        </div>
+    </div>
+<?php
+
+}
+
+function listarTabla($c, &$vec){
+    $bd = $_COOKIE['bd'];
+    mysqli_select_db($c, $bd);
+    $p = "SHOW TABLES";
+    $vec = mysqli_query($c, $p);
+}
+
+function formuSelect2($get)
+{
+
+    conectar($c);
+    listarbd($c, $vec);
+
+?>
+
+    <div class="card text-white bg-primary o-hidden ">
+        <div class="card-body">
+            <form action="codigo/principal.php?<?php echo "$get" ?>" method="post">
+                <select name="base">
+                    <option value="">Seleccione:</option>
+                    <?php listabd($vec); ?>
+                </select>
+                <input type="submit" value="selecionar bd">
+            </form>
+        </div>
+    </div>
+<?php
 
 }
 
 function tablasbd()
 {
     conectar($c);
-    $bd = $_POST['base'];
+    $bd = $_COOKIE['bd'];
     mysqli_select_db($c, $bd);
 
     $p = "SHOW TABLES";
@@ -116,30 +169,24 @@ function tablasbd()
     }
 }
 
-function menubd()
-{
-    conectar($c);
-    listarbd($c, $vec);
-    mostrarbd($vec);
-}
 
 function listarcolumna()
 {
     conectar($c);
 
-    $bd = $_POST['base'];
+    $bd = $_COOKIE['bd'];
     mysqli_select_db($c, $bd);
 
     listado($c, $vec, $bd);
-    
-    // mostrartabla($vec);
+
+    var_dump($vec);
+    //mostrartabla($vec);
 }
 
 function listado($c, &$vec, $bd)
 {
     if (isset($c)) {
-        $operacion = "SHOW COLUMNS FROM $bd";
-        $vec = mysqli_query($c, $operacion);
+        formuSelectTabla("campo");
     }
 }
 
@@ -149,5 +196,59 @@ function mostrartabla($vec)
         foreach ($value as $key2 => $value2) {
             echo "$value2<br>";
         }
+    }
+}
+
+function campos(){
+    conectar($c);
+    $bd=$_COOKIE['bd'];
+    mysqli_select_db($c, $bd);
+    $tabla = $_POST['tabla'];
+    $p= "SHOW COLUMNS FROM $tabla";
+    $vec = mysqli_query($c, $p);
+    foreach ($vec as $key => $value) {
+        foreach ($value as $key2 => $value2) {
+            if ($key2 == "Field") {
+                echo "$value2<br>";
+            }
+        }
+    }
+}
+
+function FCBD(){
+?>
+    <form action="principal.php?CBD" method="post">
+    Nombre de la base de datos:
+        <input type="text" name="nombre" placeholder="Nombre base de datos">
+        <input type="submit" value="crear">
+    </form>
+<?php
+    Todasbd();
+}
+
+function CBD(){
+    $nombre = $_POST['nombre'];
+
+    conectar($c);
+    $p="CREATE DATABASE $nombre";
+
+    if (mysqli_query($c, $p)) {
+        echo "Base de datos creada";
+    }else {
+        echo "Error al crear la base de datos";
+    }
+}
+
+Function DBD() {
+    $bd=$_COOKIE['bd'];
+    
+    conectar($c);
+
+    $p="DROP DATABASE $bd";
+
+    if (mysqli_query($c, $p)) {
+        echo "Base de datos Eliminada";
+    } else {
+        echo "Error al eliminar la base de datos";
     }
 }

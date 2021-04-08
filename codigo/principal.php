@@ -4,6 +4,10 @@ include('funciones.php');
 
 if (isset($_GET['cerrar'])) {
     cerrar();
+}else if (isset($_GET['base'])){
+    selecbd();
+} elseif (isset($_GET['DBD'])) {
+    setcookie("bd", "bd", time() + 0, "/");
 }
 
 ?>
@@ -125,14 +129,21 @@ if (isset($_GET['cerrar'])) {
                 login();
             } elseif (isset($_GET['Todasbd'])) {
                 Todasbd();
-            }elseif (isset($_GET['tablasbd'])){
-                formuSelect("tablas");
             }elseif (isset($_GET['tablas'])){
                 tablasbd();
-            }elseif (isset($_GET['menubd'])) {
-                formuSelect("tabla");
-            }elseif (isset($_GET['tabla'])){
+            }elseif (isset($_GET['menubd'])){
+                listarcolumna("tablas");
+            }
+            elseif (isset($_GET['tabla'])){
                 listarcolumna();
+            }elseif (isset($_GET['campo'])){
+                campos();
+            }elseif (isset($_GET['FCBD'])){
+                FCBD();
+            }elseif (isset($_GET['CBD'])){
+                CBD();
+            }elseif (isset($_GET['DBD'])){
+                DBD();
             }
             ?>
         </div>

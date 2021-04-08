@@ -53,49 +53,63 @@ include("codigo/funciones.php");
                 </a>
               </div>
             </div>
-          <?php
-          } else {
-            echo "<font color=\"#34b1eb\"><h4>Hola " . $_SESSION['nombre'] . "</h4></font>";
-          ?>
-            <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
-              <i class="fa fa-fw fa-database"></i>
-              <span class="nav-link-text">Consultas</span>
-            </a>
-            <ul class="sidenav-second-level collapse" id="collapseComponents">
-              <li>
-                <a href="codigo/principal.php?Todasbd">Todas las Bases de datos</a>
-              </li>
-              <li>
-                <a href="codigo/principal.php?tablasbd">Tablas de Bases de datos</a>
-              </li>
-              <li>
-                <a href="codigo/principal.php?menubd">Columnas de Bases de datos</a>
-              </li>
-            </ul>
             <?php
-            if ($_SESSION['tipo'] == "Admin") {
+          } else {
+
+            echo "<font color=\"#34b1eb\"><h4>Hola " . $_SESSION['nombre'] . "</h4></font>";
+
+
+            formuSelect2("base");
+
+            if (isset($_COOKIE['bd'])) {
             ?>
-              <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents2" data-parent="#exampleAccordion">
+              <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
                 <i class="fa fa-fw fa-database"></i>
-                <span class="nav-link-text">Administración</span>
+
+                <span class="nav-link-text">Consultas</span>
               </a>
-              <ul class="sidenav-second-level collapse" id="collapseComponents2">
+              </a>
+              <ul class="sidenav-second-level collapse" id="collapseComponents">
                 <li>
-                  <a href="#">Nueva base de datos</a>
+                  <a href="codigo/principal.php?Todasbd">Todas las Bases de datos</a>
                 </li>
                 <li>
-                  <a href="#">Borar Base de datos</a>
+                  <a href="codigo/principal.php?tablas">Tablas de Bases de datos</a>
                 </li>
                 <li>
-                  <a href="#">Nueva tabla</a>
-                </li>
-                <li>
-                  <a href="#">Borrar tabla</a>
+                  <a href="codigo/principal.php?menubd">Columnas de Bases de datos</a>
                 </li>
               </ul>
+              <?php
+              if ($_SESSION['tipo'] == "Admin") {
+              ?>
+                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents2" data-parent="#exampleAccordion">
+                  <i class="fa fa-fw fa-database"></i>
+                  <span class="nav-link-text">Administración</span>
+                </a>
+                <ul class="sidenav-second-level collapse" id="collapseComponents2">
+                  <li>
+                    <a href="codigo/principal.php?FCBD">Nueva base de datos</a>
+                  </li>
+                  <li>
+                    <a href="codigo/principal.php?DBD">Borar Base de datos</a>
+                  </li>
+                  <li>
+                    <a href="#">Nueva tabla</a>
+                  </li>
+                  <li>
+                    <a href="#">Borrar tabla</a>
+                  </li>
+                </ul>
+              <?php
+              }
+              ?>
             <?php
             }
+
             ?>
+
+
             <div class="card text-white bg-primary o-hidden ">
               <div class="card-body">
                 <a href="codigo/principal.php?cerrar">
