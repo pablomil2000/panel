@@ -126,7 +126,8 @@ function formuSelectTabla($get)
 
 }
 
-function listarTabla($c, &$vec){
+function listarTabla($c, &$vec)
+{
     $bd = $_COOKIE['bd'];
     mysqli_select_db($c, $bd);
     $p = "SHOW TABLES";
@@ -178,9 +179,6 @@ function listarcolumna()
     mysqli_select_db($c, $bd);
 
     listado($c, $vec, $bd);
-
-    var_dump($vec);
-    //mostrartabla($vec);
 }
 
 function listado($c, &$vec, $bd)
@@ -199,12 +197,13 @@ function mostrartabla($vec)
     }
 }
 
-function campos(){
+function campos()
+{
     conectar($c);
-    $bd=$_COOKIE['bd'];
+    $bd = $_COOKIE['bd'];
     mysqli_select_db($c, $bd);
     $tabla = $_POST['tabla'];
-    $p= "SHOW COLUMNS FROM $tabla";
+    $p = "SHOW COLUMNS FROM $tabla";
     $vec = mysqli_query($c, $p);
     foreach ($vec as $key => $value) {
         foreach ($value as $key2 => $value2) {
@@ -215,10 +214,11 @@ function campos(){
     }
 }
 
-function FCBD(){
+function FCBD()
+{
 ?>
     <form action="principal.php?CBD" method="post">
-    Nombre de la base de datos:
+        Nombre de la base de datos:
         <input type="text" name="nombre" placeholder="Nombre base de datos">
         <input type="submit" value="crear">
     </form>
@@ -226,29 +226,52 @@ function FCBD(){
     Todasbd();
 }
 
-function CBD(){
+function CBD()
+{
     $nombre = $_POST['nombre'];
 
     conectar($c);
-    $p="CREATE DATABASE $nombre";
+    $p = "CREATE DATABASE $nombre";
 
     if (mysqli_query($c, $p)) {
         echo "Base de datos creada";
-    }else {
+    } else {
         echo "Error al crear la base de datos";
     }
 }
 
-Function DBD() {
-    $bd=$_COOKIE['bd'];
-    
+function DBD()
+{
+    $bd = $_COOKIE['bd'];
+
     conectar($c);
 
-    $p="DROP DATABASE $bd";
+    $p = "DROP DATABASE $bd";
 
     if (mysqli_query($c, $p)) {
         echo "Base de datos Eliminada";
     } else {
         echo "Error al eliminar la base de datos";
     }
+}
+
+function Formunuevatabla()
+{
+?>
+    <form action="principal.php?nuevaT" method="post">
+        Nombre de la tabla: <input type="text" name="tabla"><br><br>
+        Campo de la tabla: <input type="text" name="campo"><br><br>
+        Tipo de dato: <select name="tipo">
+        
+        </select>
+        <input type="submit" value="Crear">
+    </form>
+<?php
+}
+
+function nuevaT(){
+    $bd = $_COOKIE['bd'];
+    conectar($c);
+    $tabla=$_POST['tabla'];
+    $p= "CREATE TABLE $tabla";
 }

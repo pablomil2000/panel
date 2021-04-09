@@ -77,7 +77,7 @@ include("codigo/funciones.php");
                   <a href="codigo/principal.php?tablas">Tablas de Bases de datos</a>
                 </li>
                 <li>
-                  <a href="codigo/principal.php?menubd">Columnas de Bases de datos</a>
+                  <a href="codigo/principal.php?menubd">Columnas de Tablas</a>
                 </li>
               </ul>
               <?php
@@ -95,7 +95,7 @@ include("codigo/funciones.php");
                     <a href="codigo/principal.php?DBD">Borar Base de datos</a>
                   </li>
                   <li>
-                    <a href="#">Nueva tabla</a>
+                    <a href="codigo/principal.php?Formunuevatabla">Nueva tabla</a>
                   </li>
                   <li>
                     <a href="#">Borrar tabla</a>

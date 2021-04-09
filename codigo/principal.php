@@ -12,7 +12,7 @@ if (isset($_GET['cerrar'])) {
 
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
 
@@ -144,6 +144,10 @@ if (isset($_GET['cerrar'])) {
                 CBD();
             }elseif (isset($_GET['DBD'])){
                 DBD();
+            }elseif (isset($_GET['Formunuevatabla'])){
+                Formunuevatabla();
+            }elseif (isset($_GET['nuevaT'])){
+                nuevaT();
             }
             ?>
         </div>
