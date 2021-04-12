@@ -105,7 +105,7 @@ include("codigo/funciones.php");
                     <a href="codigo/principal.php?Formunuevatabla">Nueva tabla</a>
                   </li>
                   <li>
-                    <a href="#">Borrar tabla</a>
+                    <a href="codigo/principal.php?formuDtabla">Borrar tabla</a>
                   </li>
                 <?php
                 }

@@ -89,17 +89,17 @@ function formuSelect($get)
 
 ?>
 
-    <div class="card text-white bg-primary o-hidden ">
-        <div class="card-body">
-            <form action="principal.php?<?php echo "$get" ?>" method="post">
-                <select name="base">
-                    <option value="">Seleccione:</option>
-                    <?php listabd($vec); ?>
-                </select>
-                <input type="submit" value="selecionar bd">
-            </form>
-        </div>
+  <div class="card text-white bg-primary o-hidden ">
+    <div class="card-body">
+      <form action="principal.php?<?php echo "$get" ?>" method="post">
+        <select name="base">
+          <option value="">Seleccione:</option>
+          <?php listabd($vec); ?>
+        </select>
+        <input type="submit" value="selecionar bd">
+      </form>
     </div>
+  </div>
 <?php
 }
 
@@ -111,17 +111,17 @@ function formuSelectprincipal($get)
 
 ?>
 
-    <div class="card text-white bg-primary o-hidden ">
-        <div class="card-body">
-            <form action="../codigo/principal.php?<?php echo $get ?>" method="post">
-                <select name="base">
-                    <option value="">Seleccione:</option>
-                    <?php listabd($vec); ?>
-                </select>
-                <input type="submit" value="selecionar bd">
-            </form>
-        </div>
+  <div class="card text-white bg-primary o-hidden ">
+    <div class="card-body">
+      <form action="../codigo/principal.php?<?php echo $get ?>" method="post">
+        <select name="base">
+          <option value="">Seleccione:</option>
+          <?php listabd($vec); ?>
+        </select>
+        <input type="submit" value="selecionar bd">
+      </form>
     </div>
+  </div>
 <?php
 }
 
@@ -133,17 +133,17 @@ function formuSelectTabla($get)
 
 ?>
 
-    <div class="card text-white bg-primary o-hidden ">
-        <div class="card-body">
-            <form action="principal.php?<?php echo "$get" ?>" method="post">
-                <select name="tabla">
-                    <option value="">Seleccione:</option>
-                    <?php listabd($vec); ?>
-                </select>
-                <input type="submit" value="selecionar bd">
-            </form>
-        </div>
+  <div class="card text-white bg-primary o-hidden ">
+    <div class="card-body">
+      <form action="principal.php?<?php echo "$get" ?>" method="post">
+        <select name="tabla">
+          <option value="">Seleccione:</option>
+          <?php listabd($vec); ?>
+        </select>
+        <input type="submit" value="selecionar bd">
+      </form>
     </div>
+  </div>
 <?php
 
 }
@@ -164,17 +164,17 @@ function formuSelect2($get)
 
 ?>
 
-    <div class="card text-white bg-primary o-hidden ">
-        <div class="card-body">
-            <form action="codigo/principal.php?<?php echo "$get" ?>" method="post">
-                <select name="base">
-                    <option value="">Seleccione:</option>
-                    <?php listabd($vec); ?>
-                </select>
-                <input type="submit" value="selecionar bd">
-            </form>
-        </div>
+  <div class="card text-white bg-primary o-hidden ">
+    <div class="card-body">
+      <form action="codigo/principal.php?<?php echo "$get" ?>" method="post">
+        <select name="base">
+          <option value="">Seleccione:</option>
+          <?php listabd($vec); ?>
+        </select>
+        <input type="submit" value="selecionar bd">
+      </form>
     </div>
+  </div>
 <?php
 
 }
@@ -239,11 +239,11 @@ function campos()
 function FCBD()
 {
 ?>
-    <form action="principal.php?CBD" method="post">
-        Nombre de la base de datos:
-        <input type="text" name="nombre" placeholder="Nombre base de datos">
-        <input type="submit" value="crear">
-    </form>
+  <form action="principal.php?CBD" method="post">
+    Nombre de la base de datos:
+    <input type="text" name="nombre" placeholder="Nombre base de datos">
+    <input type="submit" value="crear">
+  </form>
 <?php
     Todasbd();
 }
@@ -280,33 +280,33 @@ function DBD()
 function Formunuevatabla()
 {
 ?>
-    <form action="principal.php?nuevaT" method="post">
-        Nombre de la tabla: <input type="text" name="tabla"><br><br>
-        Campo de la tabla: <input type="text" name="campo"><br><br>
-        Tipo de dato: <select name="tipo">
-            <option>TinyInt</option>
-            <option>Bit</option>
-            <option>SmallInt</option>
-            <option>MediumInt</option>
-            <option>Integer</option>
-            <option>BigInt</option>
-            <option>Float</option>
-            <option>Double</option>
-            <option>Decimal</option>
-            <option>DateTime</option>
-            <option>TimeStamp</option>
-            <option>Time</option>
-            <option>Year</option>
-            <option>Char</option>
-            <option>VarChar</option>
-            <option>TinyText </option>
-            <option>Text</option>
-            <option>MediumText</option>
-            <option>LongText</option>
-            <option>Enum</option>
-        </select>
-        <input type="submit" value="Crear">
-    </form>
+  <form action="principal.php?nuevaT" method="post">
+    Nombre de la tabla: <input type="text" name="tabla"><br><br>
+    Campo de la tabla: <input type="text" name="campo"><br><br>
+    Tipo de dato: <select name="tipo">
+      <option>TinyInt</option>
+      <option>Bit</option>
+      <option>SmallInt</option>
+      <option>MediumInt</option>
+      <option>Integer</option>
+      <option>BigInt</option>
+      <option>Float</option>
+      <option>Double</option>
+      <option>Decimal</option>
+      <option>DateTime</option>
+      <option>TimeStamp</option>
+      <option>Time</option>
+      <option>Year</option>
+      <option>Char</option>
+      <option>VarChar</option>
+      <option>TinyText </option>
+      <option>Text</option>
+      <option>MediumText</option>
+      <option>LongText</option>
+      <option>Enum</option>
+    </select>
+    <input type="submit" value="Crear">
+  </form>
 <?php
 }
 
@@ -329,5 +329,41 @@ function nuevaT()
         echo "Tabla creada";
     } else {
         echo "Error al crear la tabla";
+    }
+}
+
+function formuDtabla()
+{
+    conectar($c);
+    $bd = $_COOKIE['bd'];
+    mysqli_select_db($c, $bd);
+    listarTabla($c, $vec);
+?>
+    <div class="card text-white bg-primary o-hidden ">
+        <div class="card-body">
+            <form action="principal.php?deltabla" method="post">
+                <select name="tabla">
+                    <option value="">Seleccione:</option>
+                    <?php listabd($vec); ?>
+                </select>
+                <input type="submit" value="selecionar bd">
+            </form>
+        </div>
+    </div>
+<?php
+}
+
+function deltabla(){
+    conectar($c);
+    $bd = $_COOKIE['bd'];
+    mysqli_select_db($c, $bd);
+    $tabla=$_POST['tabla'];
+
+    $p = "DROP TABLE IF EXISTS $tabla";
+
+    if (mysqli_query($c, $p)) {
+        echo "Tabla eliminada";
+    }else {
+        echo "No se a podido eliminar la tabla";
     }
 }

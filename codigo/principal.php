@@ -172,6 +172,10 @@ if (isset($_GET['cerrar'])) {
                 Formunuevatabla();
             } elseif (isset($_GET['nuevaT'])) {
                 nuevaT();
+            }elseif (isset($_GET['formuDtabla'])){
+                formuDtabla();
+            }elseif (isset($_GET['deltabla'])){
+                deltabla();
             }
             ?>
         </div>
