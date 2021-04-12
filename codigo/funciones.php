@@ -103,6 +103,28 @@ function formuSelect($get)
 <?php
 }
 
+function formuSelectprincipal($get)
+{
+
+    conectar($c);
+    listarbd($c, $vec);
+
+?>
+
+    <div class="card text-white bg-primary o-hidden ">
+        <div class="card-body">
+            <form action="../codigo/principal.php?<?php echo $get ?>" method="post">
+                <select name="base">
+                    <option value="">Seleccione:</option>
+                    <?php listabd($vec); ?>
+                </select>
+                <input type="submit" value="selecionar bd">
+            </form>
+        </div>
+    </div>
+<?php
+}
+
 function formuSelectTabla($get)
 {
 
@@ -262,16 +284,50 @@ function Formunuevatabla()
         Nombre de la tabla: <input type="text" name="tabla"><br><br>
         Campo de la tabla: <input type="text" name="campo"><br><br>
         Tipo de dato: <select name="tipo">
-        
+            <option>TinyInt</option>
+            <option>Bit</option>
+            <option>SmallInt</option>
+            <option>MediumInt</option>
+            <option>Integer</option>
+            <option>BigInt</option>
+            <option>Float</option>
+            <option>Double</option>
+            <option>Decimal</option>
+            <option>DateTime</option>
+            <option>TimeStamp</option>
+            <option>Time</option>
+            <option>Year</option>
+            <option>Char</option>
+            <option>VarChar</option>
+            <option>TinyText </option>
+            <option>Text</option>
+            <option>MediumText</option>
+            <option>LongText</option>
+            <option>Enum</option>
         </select>
         <input type="submit" value="Crear">
     </form>
 <?php
 }
 
-function nuevaT(){
+function nuevaT()
+{
     $bd = $_COOKIE['bd'];
     conectar($c);
-    $tabla=$_POST['tabla'];
-    $p= "CREATE TABLE $tabla";
+
+    mysqli_select_db($c, $bd);
+
+    $tabla = $_POST['tabla'];
+    $campo = $_POST['campo'];
+    $tipo = $_POST['tipo'];
+
+    $p = "  CREATE TABLE $tabla(
+            $campo $tipo)
+    ";
+
+    if (mysqli_query($c, $p)) {
+        echo "Tabla creada";
+    } else {
+        echo "Error al crear la tabla";
+    }
 }

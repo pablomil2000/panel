@@ -4,7 +4,7 @@ include('funciones.php');
 
 if (isset($_GET['cerrar'])) {
     cerrar();
-}else if (isset($_GET['base'])){
+} else if (isset($_GET['base'])) {
     selecbd();
 } elseif (isset($_GET['DBD'])) {
     setcookie("bd", "bd", time() + 0, "/");
@@ -64,22 +64,34 @@ if (isset($_GET['cerrar'])) {
                         </div>
                     <?php
                     } else {
+
                         echo "<font color=\"#34b1eb\"><h4>Hola " . $_SESSION['nombre'] . "</h4></font>";
+
+                        formuSelectprincipal("base");
                     ?>
                         <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
                             <i class="fa fa-fw fa-database"></i>
+
                             <span class="nav-link-text">Consultas</span>
+                        </a>
                         </a>
                         <ul class="sidenav-second-level collapse" id="collapseComponents">
                             <li>
                                 <a href="../codigo/principal.php?Todasbd">Todas las Bases de datos</a>
                             </li>
-                            <li>
-                                <a href="../codigo/principal.php?tablasbd">Tablas de Bases de datos</a>
-                            </li>
-                            <li>
-                                <a href="#">Columnas de Bases de datos</a>
-                            </li>
+                            <?php
+                            if (isset($_COOKIE['bd'])) {
+                            ?>
+                                <li>
+                                    <a href="../codigo/principal.php?tablas">Tablas de Bases de datos</a>
+                                </li>
+                                <li>
+                                    <a href="../codigo/principal.php?menubd">Columnas de Tablas</a>
+                                </li>
+                            <?php
+                            }
+                            ?>
+
                         </ul>
                         <?php
                         if ($_SESSION['tipo'] == "Admin") {
@@ -90,28 +102,40 @@ if (isset($_GET['cerrar'])) {
                             </a>
                             <ul class="sidenav-second-level collapse" id="collapseComponents2">
                                 <li>
-                                    <a href="#">Nueva base de datos</a>
+                                    <a href="../codigo/principal.php?FCBD">Nueva base de datos</a>
                                 </li>
-                                <li>
-                                    <a href="#">Borar Base de datos</a>
-                                </li>
-                                <li>
-                                    <a href="#">Nueva tabla</a>
-                                </li>
-                                <li>
-                                    <a href="#">Borrar tabla</a>
-                                </li>
+                                <?php
+                                if (isset($_COOKIE['bd'])) {
+                                ?>
+                                    <li>
+                                        <a href="../codigo/principal.php?DBD">Borar Base de datos</a>
+                                    </li>
+                                    <li>
+                                        <a href="../codigo/principal.php?Formunuevatabla">Nueva tabla</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Borrar tabla</a>
+                                    </li>
+                                <?php
+                                }
+                                ?>
                             </ul>
                         <?php
                         }
                         ?>
+                        <?php
+
+                        ?>
+
+
                         <div class="card text-white bg-primary o-hidden ">
                             <div class="card-body">
-                                <a href="../codigo/principal.php?cerrar">
+                                <a href="codigo/principal.php?cerrar">
                                     <div class="mr-5 text-light">Cerrar Sesion</div>
                                 </a>
                             </div>
                         </div>
+
                     <?php
                     }
                     ?>
@@ -129,24 +153,24 @@ if (isset($_GET['cerrar'])) {
                 login();
             } elseif (isset($_GET['Todasbd'])) {
                 Todasbd();
-            }elseif (isset($_GET['tablas'])){
+            } elseif (isset($_GET['tablas'])) {
                 tablasbd();
-            }elseif (isset($_GET['menubd'])){
+            } elseif (isset($_GET['menubd'])) {
                 listarcolumna("tablas");
-            }
-            elseif (isset($_GET['tabla'])){
+            } elseif (isset($_GET['tabla'])) {
                 listarcolumna();
-            }elseif (isset($_GET['campo'])){
+            } elseif (isset($_GET['campo'])) {
+                listarcolumna("tablas");
                 campos();
-            }elseif (isset($_GET['FCBD'])){
+            } elseif (isset($_GET['FCBD'])) {
                 FCBD();
-            }elseif (isset($_GET['CBD'])){
+            } elseif (isset($_GET['CBD'])) {
                 CBD();
-            }elseif (isset($_GET['DBD'])){
+            } elseif (isset($_GET['DBD'])) {
                 DBD();
-            }elseif (isset($_GET['Formunuevatabla'])){
+            } elseif (isset($_GET['Formunuevatabla'])) {
                 Formunuevatabla();
-            }elseif (isset($_GET['nuevaT'])){
+            } elseif (isset($_GET['nuevaT'])) {
                 nuevaT();
             }
             ?>

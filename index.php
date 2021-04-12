@@ -58,7 +58,6 @@ include("codigo/funciones.php");
 
             echo "<font color=\"#34b1eb\"><h4>Hola " . $_SESSION['nombre'] . "</h4></font>";
 
-
             formuSelect2("base");
           ?>
             <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
